@@ -456,9 +456,10 @@ async function updateSegments() {
             var qcamera = false;
             var fcamera = false;
             var dcamera = false;
+            var ecamera = false;
             var qlog = false;
             var rlog = false;
-            var fileStatus = {'fcamera.hevc': false, 'dcamera.hevc' : false, 'qcamera.ts': false, 'qlog.bz2' : false, 'rlog.bz2' : false};
+            var fileStatus = {'fcamera.hevc': false, 'dcamera.hevc' : false, 'ecamera.hevc' : false, 'qcamera.ts': false, 'qlog.bz2' : false, 'rlog.bz2' : false};
 
             for (var i in directoryTree.children) {
                 fileStatus[directoryTree.children[i].name]=directoryTree.children[i].path;
@@ -466,7 +467,7 @@ async function updateSegments() {
             
 
             var uploadComplete=false;
-            if (fileStatus['qcamera.ts']!==false && fileStatus['fcamera.hevc']!==false && fileStatus['rlog.bz2']!==false && fileStatus['qlog.bz2']!==false) // upload complete
+            if (fileStatus['qcamera.ts']!==false &&fileStatus['ecamera.ts']!==false && fileStatus['fcamera.hevc']!==false && fileStatus['rlog.bz2']!==false && fileStatus['qlog.bz2']!==false) // upload complete
                 uploadComplete=true;
 
             if (fileStatus['qcamera.ts']!==false && fileStatus['rlog.bz2']!==false && !segment.is_processed) { // can process
